@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="shape"
+        android:title="Фигура"
+        android:entries="@array/shapes"
+        android:entryValues="@array/shape_values"
+        android:defaultValue="torus" />
+
+    <SeekBarPreference
+        android:key="speed"
+        android:title="Скорость анимации"
+        android:defaultValue="50"
+        android:max="100" />
+
+    <!-- НОВАЯ НАСТРОЙКА РАЗМЕРА -->
+    <SeekBarPreference
+        android:key="size"
+        android:title="Размер символов"
+        android:defaultValue="24"
+        android:max="60" />
+
+    <ListPreference
+        android:key="color"
+        android:title="Цвет символов"
+        android:entries="@array/colors"
+        android:entryValues="@array/color_values"
+        android:defaultValue="green" />
+
+</PreferenceScreen>

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">ASCII Wallpaper</string>
+    <string name="wallpaper_desc">Анимированные ASCII обои</string>
+    <string-array name="shapes">
+        <item>Тор (Бесконечная лента)</item>
+        <item>Сфера</item>
+        <item>Куб</item>
+    </string-array>
+    <string-array name="shape_values">
+        <item>torus</item>
+        <item>sphere</item>
+        <item>cube</item>
+    </string-array>
+    <string-array name="colors">
+        <item>Зеленый</item>
+        <item>Янтарный</item>
+        <item>Белый</item>
+    </string-array>
+    <string-array name="color_values">
+        <item>green</item>
+        <item>amber</item>
+        <item>white</item>
+    </string-array>
+</resources>
