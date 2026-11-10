@@ -12,6 +12,9 @@
 
 </div>
 
+
+<img width="1388" height="768" alt="1794327944500" src="https://github.com/user-attachments/assets/97955f6d-015e-4097-ad49-7c320f664c56" />
+
 ---
 
 <div id="english"></div>
