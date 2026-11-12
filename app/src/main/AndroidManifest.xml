@@ -10,9 +10,27 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Ascii_Wallpapers">
+        android:theme="@style/Theme.Ascii_Wallpapers"
+        tools:targetApi="31">
 
-        <!-- 1. Сервис обоев (должен быть внутри application) -->
+        <!-- 1. ГЛАВНЫЙ ЭКРАН ПРИЛОЖЕНИЯ (Иконка на рабочем столе) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Ascii_Wallpapers">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 2. ЭКРАН НАСТРОЕК (Теперь с правильной темой Material 3) -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Ascii_Wallpapers" />
+
+        <!-- 3. СЕРВИС ЖИВЫХ ОБОЕВ (Работает в фоне) -->
         <service
             android:name=".AsciiWallpaperService"
             android:enabled="true"
@@ -25,15 +43,6 @@
                 android:name="android.service.wallpaper"
                 android:resource="@xml/wallpaper" />
         </service>
-
-        <!-- 2. Активность настроек (также внутри application) -->
-        <activity
-            android:name=".SettingsActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight" />
-
-        <!-- Если у вас есть MainActivity от шаблона проекта, она тоже должна быть здесь -->
-        <!-- <activity android:name=".MainActivity" android:exported="true"> ... </activity> -->
 
     </application>
 

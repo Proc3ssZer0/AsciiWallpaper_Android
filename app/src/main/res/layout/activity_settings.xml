@@ -1,26 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#1E1E1E">
+    android:background="?attr/colorSurface"
+    tools:context=".SettingsActivity">
 
-    <!-- Простой заголовок, который не сможет ничего перекрыть -->
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Настройки обоев"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:padding="20dp"
-        android:background="#2C2C2C" />
+        android:layout_height="wrap_content">
 
-    <!-- Контейнер для фрагмента -->
-    <FrameLayout
-        android:id="@+id/settings_container"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Настройки"
+            app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Выбор фигуры -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Фигура"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleShape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTorus"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Тор" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSphere"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Сфера" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCube"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Куб" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <!-- Скорость -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Скорость"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="10.0"
+                android:valueTo="100.0"
+                android:stepSize="1.0"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Размер -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Размер символов"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="10.0"
+                android:valueTo="60.0"
+                android:stepSize="1.0"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Цвета (Палитра) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Цвет символов"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnColorGreen"
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="16dp"
+                    app:backgroundTint="#00FF00" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnColorAmber"
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="16dp"
+                    app:backgroundTint="#FFBF00" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnColorWhite"
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:backgroundTint="#FFFFFF" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
