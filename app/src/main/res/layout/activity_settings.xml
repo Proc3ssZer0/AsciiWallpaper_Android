@@ -104,6 +104,38 @@
                 android:stepSize="1.0"
                 android:layout_marginBottom="24dp" />
 
+            <!-- Плотность сетки -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Плотность сетки"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderDensity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="5.0"
+                android:valueTo="30.0"
+                android:stepSize="1.0"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Частота кадров -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Частота кадров (FPS)"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderFps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="10.0"
+                android:valueTo="120.0"
+                android:stepSize="5.0"
+                android:layout_marginBottom="24dp" />
+
             <!-- Цвета (Палитра) -->
             <TextView
                 android:layout_width="wrap_content"

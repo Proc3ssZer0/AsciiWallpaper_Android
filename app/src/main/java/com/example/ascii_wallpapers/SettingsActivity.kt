@@ -8,6 +8,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.slider.Slider
+import kotlin.math.roundToInt
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -25,6 +26,8 @@ class SettingsActivity : AppCompatActivity() {
         val toggleShape = findViewById<MaterialButtonToggleGroup>(R.id.toggleShape)
         val sliderSpeed = findViewById<Slider>(R.id.sliderSpeed)
         val sliderSize = findViewById<Slider>(R.id.sliderSize)
+        val sliderDensity = findViewById<Slider>(R.id.sliderDensity)
+        val sliderFps = findViewById<Slider>(R.id.sliderFps)
         val btnGreen = findViewById<MaterialButton>(R.id.btnColorGreen)
         val btnAmber = findViewById<MaterialButton>(R.id.btnColorAmber)
         val btnWhite = findViewById<MaterialButton>(R.id.btnColorWhite)
@@ -37,13 +40,19 @@ class SettingsActivity : AppCompatActivity() {
             else -> toggleShape.check(R.id.btnTorus)
         }
 
-        // 2. Загружаем ползунки (с защитой от старых значений)
-        // Ограничиваем значение в пределах от 10 до 100
+        // 2. Загружаем ползунки
         val savedSpeed = prefs.getInt("speed", 50).toFloat().coerceIn(10f, 100f)
         sliderSpeed.value = savedSpeed
 
         val savedSize = prefs.getInt("size", 24).toFloat().coerceIn(10f, 60f)
         sliderSize.value = savedSize
+
+        val savedDensity = prefs.getInt("density", 10).toFloat().coerceIn(5f, 30f)
+        sliderDensity.value = savedDensity
+
+        val savedFps = prefs.getInt("fps", 30).toFloat().coerceIn(10f, 120f)
+        // Ползунок идёт с шагом 5, поэтому подгоняем сохранённое значение под шаг
+        sliderFps.value = ((savedFps - 10f) / 5f).roundToInt() * 5f + 10f
 
         // 3. Обработчики изменений
         toggleShape.addOnButtonCheckedListener { _, checkedId, isChecked ->
@@ -63,6 +72,14 @@ class SettingsActivity : AppCompatActivity() {
 
         sliderSize.addOnChangeListener { _, value, _ ->
             prefs.edit().putInt("size", value.toInt()).apply()
+        }
+
+        sliderDensity.addOnChangeListener { _, value, _ ->
+            prefs.edit().putInt("density", value.toInt()).apply()
+        }
+
+        sliderFps.addOnChangeListener { _, value, _ ->
+            prefs.edit().putInt("fps", value.toInt()).apply()
         }
 
         btnGreen.setOnClickListener { prefs.edit().putString("color", "green").apply() }
