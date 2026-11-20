@@ -22,6 +22,8 @@ class AsciiWallpaperService : WallpaperService() {
             textSize = 24f
             typeface = Typeface.MONOSPACE
             isAntiAlias = true
+            // Дробные позиции символов: ровная сетка и без дрейфа при пакетной отрисовке
+            isSubpixelText = true
         }
 
         private var visible = false
@@ -122,6 +124,7 @@ class AsciiWallpaperService : WallpaperService() {
                     when (shapeType) {
                         "sphere" -> AsciiRenderer.renderSphere(it, paint, angleA, angleB, densityMultiplier)
                         "cube" -> AsciiRenderer.renderCube(it, paint, angleA, angleB, densityMultiplier)
+                        "dna" -> AsciiRenderer.renderDna(it, paint, angleA, angleB, densityMultiplier)
                         else -> AsciiRenderer.renderTorus(it, paint, angleA, angleB, densityMultiplier)
                     }
                 }

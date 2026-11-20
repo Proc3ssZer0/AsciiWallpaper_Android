@@ -37,6 +37,7 @@ class SettingsActivity : AppCompatActivity() {
         when (currentShape) {
             "sphere" -> toggleShape.check(R.id.btnSphere)
             "cube" -> toggleShape.check(R.id.btnCube)
+            "dna" -> toggleShape.check(R.id.btnDna)
             else -> toggleShape.check(R.id.btnTorus)
         }
 
@@ -60,6 +61,7 @@ class SettingsActivity : AppCompatActivity() {
                 val shape = when (checkedId) {
                     R.id.btnSphere -> "sphere"
                     R.id.btnCube -> "cube"
+                    R.id.btnDna -> "dna"
                     else -> "torus"
                 }
                 prefs.edit().putString("shape", shape).apply()
